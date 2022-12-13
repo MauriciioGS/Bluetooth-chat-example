@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         binding.devicesList.setOnItemClickListener { parent, view, position, id ->
             print("Evento......")
             connectToServerThread =
-                ConnectToServerThread(discoveryDevices.get(position), bluetoothAdapter, this)
+                ConnectToServerThread(discoveryDevices[position], bluetoothAdapter, this)
             connectToServerThread?.start()
         }
     }

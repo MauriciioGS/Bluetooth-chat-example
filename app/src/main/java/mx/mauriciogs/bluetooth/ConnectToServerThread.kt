@@ -11,7 +11,8 @@ import java.io.IOException
 import java.util.*
 
 class ConnectToServerThread(
-    var bluetoothDevice: BluetoothDevice, var bluetoothAdapter: BluetoothAdapter,
+    var bluetoothDevice: BluetoothDevice,
+    var bluetoothAdapter: BluetoothAdapter,
     var context: Context
 ) : Thread() {
     lateinit var bluetoothSocket: BluetoothSocket
@@ -27,6 +28,9 @@ class ConnectToServerThread(
                     UUID.fromString(MainActivity.UUID)
                 )
             }
+            bluetoothSocket = bluetoothDevice.createInsecureRfcommSocketToServiceRecord(
+                UUID.fromString(MainActivity.UUID)
+            )
         } catch (e: IOException) {
             println(e.localizedMessage)
         }
